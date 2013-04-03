@@ -34,7 +34,7 @@ void show_status(string info, uint cur, uint size)
     }
 }
 
-float dot(double* p, double* qLocal,int dim)
+float dot(double p[], double qLocal[],int dim)
 {
     double result = 0.0;
     for (int i=1; i<dim+1; ++i){

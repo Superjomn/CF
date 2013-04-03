@@ -12,6 +12,10 @@
 #include "common.h"
 using namespace std;
 
+typedef vector < vector < rateNode> >::iterator TrainIter;
+typedef vector<testNode>::iterator TestIter;
+typedef vector<predictNode>::iterator PredictIter;
+
 class Data {
 public:
     vector<testNode> test_set;

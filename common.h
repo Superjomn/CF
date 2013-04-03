@@ -32,6 +32,10 @@ typedef unsigned int uint;
 typedef unsigned short ushort;
 typedef unsigned long ulong;
 
+typedef uint UidType;
+typedef uint ItemType;
+typedef ushort RateType;
+
 typedef struct Time{
     int day;
     int hour;
@@ -42,28 +46,27 @@ typedef struct Time{
 // for trainset ----------------------------------------
 typedef struct rateNode
 {
-    ushort item;
-    short rate;
+    ItemType item;
+    RateType rate;
 } rateNode;
 
 typedef struct testNode
 {
-    uint user;
-    ushort item;
-    short rate;
+    UidType user;
+    ItemType item;
+    RateType rate;
 }testSetNode;
 
 // for predictset
 typedef struct predictNode{
-    uint user;
-    ushort item;
+    UidType user;
+    ItemType item;
 }predictNode;
 
 // functions ------------------------------------------
 void show_status(string info, uint cur=0, uint size=0);
-float dot(float* p, float* qLocal,int dim);
-
-
+float dot(float p[], float qLocal[],int dim);
+void setRand(float  p[], int dim, float base);
 
 
 #endif /* COMMON_H_ */
