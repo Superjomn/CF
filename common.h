@@ -7,7 +7,12 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "time.h"
+#include <math.h>
+#include <ostream>
+#include <sstream>
+#include <algorithm>
+#include <fstream>
+#include <time.h>
 using namespace std;
 // 包含数据类型定义等
 #ifndef COMMON_H_
@@ -54,7 +59,9 @@ typedef struct predictNode{
     ushort item;
 }predictNode;
 
+// functions ------------------------------------------
 void show_status(string info, uint cur=0, uint size=0);
+float dot(float* p, float* qLocal,int dim);
 
 
 
