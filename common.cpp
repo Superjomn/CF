@@ -20,16 +20,19 @@ Time inline curtime(){
 
 void show_status(string info, uint cur, uint size)
 {
+    Time time = curtime();
     if (size == 0){
-        cout<<info<<endl;
+        cout<<info<<"\t"
+            <<time.hour<<":"\
+            <<time.minute<<":"\
+            <<time.second<<"\r"<<endl;
         return;
     }
     uint gap = size/10;
     if (cur%gap == 0){
-        Time time = curtime();
         cout<<info<<"\t"<<float(cur)/size<<"\t"\
-            <<time.hour<<" "\
-            <<time.minute<<" "\
+            <<time.hour<<":"\
+            <<time.minute<<":"\
             <<time.second<<"\r"<<endl;
     }
 }

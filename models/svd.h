@@ -4,7 +4,6 @@
  *  Created on: 2013-4-2
  *      Author: chunwei
  */
-
 #ifndef SVD_H_
 #define SVD_H_
 #include "../common.h"
@@ -12,7 +11,7 @@
 #include "../model.h"
 #define K_NUM 50
 
-namespace svd{
+namespace SVD{
 
 class svd : public model{
 private:
@@ -24,18 +23,19 @@ private:
     void initMean();
     void initBias();
     void initPQ();
+    void inline updateBias(UidType uid, ItemType itemI, float eui);
+    void inline updatePQ(UidType uid, ItemType itemI, float eui);
+
 public:
-	svd(Data *data, uint max_step);
-    void init(float alpha1, float alpha2, \
-              float beta1, float beta2);
+    svd(Data *data);
+    void init(uint max_step, float alpha1, \
+              float alpha2,  float beta1, float beta2); 
     float predict(uint uid, uint mid);
     float evaluate();
     void onestep();
-    void inline svd::updateBias(UidType uid, ItemType itemI, float eui);
-    void inline svd::updatePQ(UidType uid, ItemType itemI, float eui);
     ~svd();
-};
+}; // end class svd
 
-};
+};// end namespace svd
 
 #endif /* SVD_H_ */

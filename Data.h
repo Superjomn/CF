@@ -23,9 +23,9 @@ public:
     vector < vector < rateNode> > train_set;
 	Data();
     // add data
-    void addTrain(uint uid, uint mid, short rate);
-    void addPredict(uint uid, uint mid);
-    void addTest(uint uid, uint mid, short rate);
+    void addTrain(UidType uid, ItemType mid, RateType rate);
+    void addPredict(UidType uid, ItemType mid);
+    void addTest(UidType uid, ItemType mid, RateType rate);
 	// Show the info of the content
 	void debug();
 };

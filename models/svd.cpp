@@ -6,7 +6,7 @@
  */
 
 #include "svd.h"
-namespace svd{
+namespace SVD{
 
 float bu[USER_NUM+1] = {0};       
 float bi[ITEM_NUM+1] = {0};      
@@ -18,14 +18,11 @@ float p[USER_NUM+1][K_NUM+1] = {0};
 float q[ITEM_NUM+1][K_NUM+1] = {0};  
 float mean = 0;                      
 
-svd::svd(Data *data, uint max_step) : model(data){
-    this->max_step = max_step;
+svd::svd(Data *data) : model(data){
 }
 
-
-void svd::init(float alpha1, float alpha2, \
-          float beta1, float beta2)
-{
+void svd::init(uint max_step, float alpha1, float alpha2, float beta1, float beta2){
+    this->max_step = max_step;
     this->alpha1 = alpha1;
     this->alpha2 = alpha2;
     this->beta1 = beta1;
@@ -147,5 +144,8 @@ void inline svd::updatePQ(UidType uid, ItemType itemI, float eui){
             alpha2 * (eui*p[uid][k] - beta2*q[itemI][k]);
     }
 }
+
+// no member functions
+
 
 };// end namespace
