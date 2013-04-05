@@ -27,14 +27,16 @@ private:
     void inline updatePQ(UidType uid, ItemType itemI, float eui);
 
 public:
-    svd(Data *data);
+    svd(Data &data);
     void init(uint max_step, float alpha1, \
               float alpha2,  float beta1, float beta2); 
-    float predict(uint uid, uint mid);
+    float predict(UidType uid, ItemType mid);
     float evaluate();
     void onestep();
+    using model::output;
     ~svd();
 }; // end class svd
+
 
 };// end namespace svd
 

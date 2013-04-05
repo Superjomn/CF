@@ -16,19 +16,19 @@ Data::Data() {
     }
 }
 
-void Data::addTrain(uint uid, uint mid, short rate)
+void Data::addTrain(UidType uid, ItemType mid, RateType rate)
 {
     rateNode tem = {mid, rate};
     train_set[uid].push_back(tem);
 }
 
-void Data::addPredict(uint uid, uint mid)
+void Data::addPredict(UidType uid, ItemType mid)
 {
     predictNode tem = {uid, mid};
     predict_set.push_back(tem);
 }
 
-void Data::addTest(uint uid, uint mid, short rate)
+void Data::addTest(UidType uid, ItemType mid, RateType rate)
 {
     testNode tem = {uid, mid, rate};
     test_set.push_back(tem);

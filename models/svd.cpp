@@ -18,7 +18,15 @@ float p[USER_NUM+1][K_NUM+1] = {0};
 float q[ITEM_NUM+1][K_NUM+1] = {0};  
 float mean = 0;                      
 
-svd::svd(Data *data) : model(data){
+svd::svd(Data &data) : model(data){
+    this->max_step = 0;
+    this->alpha1 = 0.0;
+    this->alpha2 = 0.0;
+    this->beta1 = 0.0;
+    this->beta2 = 0.0;
+    this->slow_rate = 1;
+    this->preRMSE = 1000000.0;
+    this->curRMSE = 999999;
 }
 
 void svd::init(uint max_step, float alpha1, float alpha2, float beta1, float beta2){
@@ -37,7 +45,7 @@ void svd::init(uint max_step, float alpha1, float alpha2, float beta1, float bet
 
 float svd::predict(uint user, uint item)
 {
-    int RuNum = data->train_set[user].size(); //the num of items rated by user
+    int RuNum = data.train_set[user].size(); //the num of items rated by user
     float ret; 
     if(RuNum > 1) {
         ret = mean + bu[user] + bi[item] +  dot(p[user],q[item],K_NUM);
@@ -49,11 +57,11 @@ float svd::predict(uint user, uint item)
 }
 
 float svd::evaluate(){
-    vector<testNode>::iterator iter = data->test_set.begin();
-    uint testSize = data->test_set.size();
+    vector<testNode>::iterator iter = data.test_set.begin();
+    uint testSize = data.test_set.size();
     float prate, err;
     float rmse = 0;
-    for(;iter!=data->test_set.end(); ++iter)
+    for(;iter!=data.test_set.end(); ++iter)
     {
         prate = predict(iter->user, iter->item);
         err = prate - iter->rate;
@@ -69,8 +77,8 @@ void svd::initMean(){
     double sum = 0.0;
     uint num = 0;
     TrainIter train_iter ;
-    for(train_iter = data->train_set.begin(); 
-        train_iter!=data->train_set.end(); 
+    for(train_iter = data.train_set.begin(); 
+        train_iter!=data.train_set.end(); 
         ++train_iter)
     {
         vector<rateNode>::iterator iter;
@@ -104,8 +112,8 @@ void svd::onestep(){
     // scan users
     TrainIter user_set_iter;
     UidType uid = 0;
-    for(user_set_iter=data->train_set.begin(); \
-        user_set_iter!=data->train_set.end(); \
+    for(user_set_iter=data.train_set.begin(); \
+        user_set_iter!=data.train_set.end(); \
         ++user_set_iter)
     {
         ++ uid;
