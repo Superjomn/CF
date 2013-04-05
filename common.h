@@ -66,8 +66,8 @@ typedef struct predictNode{
 
 // functions ------------------------------------------
 void show_status(string info, uint cur=0, uint size=0);
-float dot(float p[], float qLocal[],int dim);
-void setRand(float  p[], int dim, float base);
+float dot(float *p, float *qLocal,int dim);
+void setRand(float  *p, int dim, float base);
 
 
 #endif /* COMMON_H_ */

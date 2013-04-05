@@ -37,12 +37,21 @@ void show_status(string info, uint cur, uint size)
     }
 }
 
-float dot(double p[], double qLocal[],int dim)
+float dot(float *p, float *qLocal,int dim)
 {
     double result = 0.0;
     for (int i=1; i<dim+1; ++i){
         result += p[i]*qLocal[i];
     }
     return result;
+}
+
+void setRand(float  *p, int dim, float base)
+{
+    for(int i=1;i<dim+1;++i){
+        //double temp = base+get_rand(dim);
+        //p[i] = temp;
+        p[i] = 1.0;
+    }
 }
 
