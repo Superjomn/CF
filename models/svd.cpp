@@ -18,7 +18,7 @@ float p[USER_NUM+1][K_NUM+1] = {0};
 float q[ITEM_NUM+1][K_NUM+1] = {0};  
 float mean = 0;                      
 
-svd::svd(Data &data) : model(data){
+svd::svd(Data &data){
     this->max_step = 0;
     this->alpha1 = 0.0;
     this->alpha2 = 0.0;
@@ -154,6 +154,10 @@ void inline svd::updatePQ(UidType uid, ItemType itemI, float eui){
 }
 
 // no member functions
+
+void initModel(uint max_step, float alpha1, float alpha2,  float beta1, float beta2)
+{
+}
 
 
 };// end namespace

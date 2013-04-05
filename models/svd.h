@@ -8,12 +8,11 @@
 #define SVD_H_
 #include "../common.h"
 #include "../Data.h"
-#include "../model.h"
 #define K_NUM 50
 
 namespace SVD{
 
-class svd : public model{
+class svd {
 private:
     uint max_step;
     double mean;
@@ -25,6 +24,7 @@ private:
     void initPQ();
     void inline updateBias(UidType uid, ItemType itemI, float eui);
     void inline updatePQ(UidType uid, ItemType itemI, float eui);
+    Data data;
 
 public:
     svd(Data &data);
@@ -33,10 +33,10 @@ public:
     float predict(UidType uid, ItemType mid);
     float evaluate();
     void onestep();
-    using model::output;
     ~svd();
 }; // end class svd
 
+void initModel(uint max_step, float alpha1, float alpha2,  float beta1, float beta2);
 
 };// end namespace svd
 

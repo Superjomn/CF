@@ -4,6 +4,9 @@
  *  Created on: 2013-4-2
  *      Author: chunwei
  */
+#ifndef COMMON_H_
+#define COMMON_H_
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -15,8 +18,6 @@
 #include <time.h>
 using namespace std;
 // 包含数据类型定义等
-#ifndef COMMON_H_
-#define COMMON_H_
 
 // size of dataset
 // TODO change the sizes
